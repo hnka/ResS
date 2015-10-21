@@ -22,6 +22,76 @@ Then(~'^the system should store the residue generator with the new address in th
     assert ResidueGenerator.findByAddressGenerator(endereco) != null
 }
 
+
+Given(~'^the system has a residue genarator with CNPJ ([^"]*)$'){String cnpj->
+    GeneratorTestDataAndOperations.createGeneratorCnpj(cnpj)
+    generator = ResidueGenerator.findGeneratorByCnpj(cnpj)
+    assert generator != null
+}
+
+When(~'^I change my cnpj to ([^"]*)$'){String newCnpj ->
+    cnpj = newCnpj
+    GeneratorTestDataAndOperations.editGeneratorCnpj(cnpj, generator)
+}
+
+Then(~'^generator with cnpj ([^"]*) is properly edited$'){->
+    assert ResidueGenerator.findGeneratorByCnpj(cnpj) != null
+}
+/*
+Given(~'^I am at the residue generator edit page'){ ->
+    to ResidueGeneratorEditPage
+    at ResidueGeneratorEditPage
+}
+
+When(~'^I fill the cnpj field with "([^"]*)"$'){String cnpj ->
+    page.fillCnpjField(cnpj)
+}
+
+
+And(~'^I updated my changes'){ ->
+    page.submitChanges()
+}
+
+Then(~'^I can see a confirmation message'){->
+    to ResidueGeneratorShowPage
+    at ResidueGeneratorShowPage
+
+    def hasMessage = page.hasMessage()
+
+    assert hasMessage != null
+}
+*/
+
+//----------------------------------------------------- FILL CNPJ INCORRECTLY-------------------------
+
+When(~'^I fill my cnpj to "([^"]*)"$'){ String cnpj ->
+    newCnpj = cnpj
+    GeneratorTestDataAndOperations.editGeneratorCnpj(newCnpj,generator)
+}
+
+Then(~'^the new cnpj is not edited'){
+    assert ResidueGenerator.findGeneratorByCnpj(newCnpj) != null
+}
+
+
+/*
+When(~'^I fill the cnpj field with "([^"]*)"$'){ String cnpj ->
+    page.fillCnpjField(cnpj)
+
+}
+
+
+Then(~'^I can see a confirmation message'){
+    at ResidueGeneratorEditPage
+    def errorBoolean = page.hasInvalidMessage()
+    assert errorBoolean != false
+}
+*/
+
+
+
+
+
 Given(~'^I am at the residue generator edit page'){ ->
     to ResidueGeneratorEditPage
     at ResidueGeneratorEditPage

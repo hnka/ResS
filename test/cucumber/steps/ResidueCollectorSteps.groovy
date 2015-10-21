@@ -5,7 +5,7 @@ package steps
  * Created by Franclin Cabral on 05/10/15.
  */
 
-
+/*
 //Controller
 Given (~'^That there is no collector with the email "([^"]*)"$'){ String email ->
     collector = ResidueCollector.findByEmailCollector(email)
@@ -71,3 +71,4 @@ Then (~'^The system show me a success message "([^"]*)" $'){String msg ->
     assert withConfirm(true) { $("input", name: "showConfirm").click()} == "The collector has been registered with success!"
 
 }
+*/

@@ -1,5 +1,7 @@
-Feature: Edit restaurant's account
-    As a restaurant's owner
+#if($Edit restaurants account)
+
+Feature: Edit restaurants account
+    As a restaurants owner
     I want edit my restaurant's informations
     So that I can keep the system updated
  
@@ -23,10 +25,12 @@ Scenario: Unsuccessful edtion due to empty fields web
     Then I see a error mensage
     And I can not edit
 
-Scenarios: Edit restaurant's account web
+Scenario: Edit restaurants account web
     Given that I am at my home account
     When I select the "Edit" button
     And I filled out all the informations
     And I select the "Update" button
-    The I see a success mensage
+    Then I see a success mensage
     And I edit the informantions
+
+#end

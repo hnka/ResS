@@ -1,7 +1,7 @@
 import org.openqa.selenium.chrome.ChromeDriver
 
 driver = {
-    File file = new File("chromedrivers/chromedriverlinux64");
+    File file = new File("chromedrivers/chromedriver.exe");
 
 
     System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
